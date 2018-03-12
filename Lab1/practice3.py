@@ -11,8 +11,11 @@ html = """
 </ul>
 """
 soup=BeautifulSoup(html,"html.parser")
-href=re.compile(r"^https://")
-li_list = soup.select(href)
-for e in li_list:
-    print(e.attrs['href'])
+
+htlist=soup.find_all('a',attrs={'href':re.compile(r"^https://")})
+
+for e in htlist:
+    print(e.get('href'))
+   # http= e.find('a',attrs={'href':re.compile(r"^https://")})
+   # print(http)
     
